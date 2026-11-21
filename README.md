@@ -2,7 +2,7 @@
 
 **Decoding Perceived Words from MEG Signals: A Subject-Adaptive and Data-Efficient Deep Learning Framework**
 
-Bu repo, TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Destekleme Programı kapsamında yürütülen araştırma projesinin kodlarını ve sonuç tablolarını içerir.
+Bu repo, "MEG Sinyallerinden Dinlenen Kelimenin Çözümlenmesi: Kişiye Uyarlanabilir ve Veri Verimliliği Odaklı Bir Derin Öğrenme Yaklaşımı" adlı araştırma projesinin kodlarını ve sonuç tablolarını içerir.
 
 Projede, katılımcıların sesli kitap dinlerken kaydedilen MEG (manyetoensefalografi) sinyallerinden, 50 kelimelik bir sözlük içinde hangi kelimeyi duyduklarını tahmin eden derin öğrenme modelleri geliştirilmektedir. Modeller derin kayıtlı tek bir katılımcıda (subj0) eğitilip yeni katılımcılara birkaç dakikalık veriyle uyarlanmakta; başarının beyin sinyalinden mi, kelime zamanlamasından mı geldiği kontrollü deneylerle sınanmaktadır.
 
@@ -28,8 +28,6 @@ meg-word-decoding/
 │   └── ip1_veri_hatti.ipynb
 ├── results/
 │   └── ip1/              # İP-1'in küçük sonuç tabloları
-├── docs/
-│   └── IP1_Sonuc_Ozeti.docx
 ├── configs/              # İP-2'den itibaren deney yapılandırmaları
 └── src/                  # İP-2'den itibaren ortak kod
 ```
@@ -79,7 +77,7 @@ Not defteri kaldığı yerden devam eder: Drive'daki ara dosyalar mevcutsa uzun 
 
 ## İP-1 sonuçları
 
-Ayrıntılı ve teknik olmayan özet: `docs/IP1_Sonuc_Ozeti.docx`. Sonuç tabloları: `results/ip1/`.
+Sonuç tabloları: `results/ip1/`.
 
 * **Veri erişimi:** subj0'ın 162 kaydının tamamına erişildi (156 eğitim, 3 doğrulama, 3 test); eğitimde 50 kelimelik sözlüğe ait 307.329 pencere var. Hedef katılımcıların verisi kademeli yayımlandığı için öneride tanımlanan B planı (R2) uygulandı.
 * **Katılımcı rolleri** (tohum 2209):
@@ -90,7 +88,7 @@ Ayrıntılı ve teknik olmayan özet: `docs/IP1_Sonuc_Ozeti.docx`. Sonuç tablol
 * **Uyarlama verisi** 11. oturumdan, iç içe üç düzeyde: A1 = 5 dk, A2 = 10 dk, A3 = oturumun tamamı.
 * **Sızıntı denetimi:** 8 otomatik testin hepsi geçti.
 * **Veri kalitesi:** NaN, Inf veya düz kanal yok. subj0'ın 7 kaydında tek noktalı zaman hataları temizlendi; işaretlenen 60 aykırı kanal incelendi, hiçbiri çıkarılmadı.
-* **Ön ölçüm:** Kaynak eğitimde darboğaz veri okuma (17,1 dk/epoch; hesaplama 0,2 dk/epoch). İP-2'nin ilk işi hızlı bir veri yükleyicidir.
+* **Ön ölçüm:** Kaynak eğitimde darboğaz veri okuma (15–20 dk/epoch; hesaplama 0,2–0,3 dk/epoch). İP-2'nin ilk işi hızlı bir veri yükleyicidir.
 
 Öneriden sapmalar ve gerekçeleri `results/ip1/deviations.csv` dosyasındadır.
 
@@ -127,9 +125,7 @@ Veri seti:
 
 > Mantegna, F., Jayalath, D., Elvers, G., Kim, T., Ballyk, B., Fung, A., Cho, S., Kwon, T., Kurth, L., Özdogan, M., Landau, G., Somaiya, P., Voets, N., Woolrich, M., & Parker Jones, O. (2026). LibriBrain100: One hundred hours of broad and deep MEG data for neural speech decoding at scale. arXiv preprint.
 
-## Teşekkür
 
-Bu çalışma TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Destekleme Programı tarafından desteklenmektedir.
 
 ## Ekip
 
