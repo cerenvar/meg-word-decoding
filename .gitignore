@@ -1,0 +1,25 @@
+# Büyük veri ve ara dosyalar Drive'da tutulur; repoya eklenmez
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.parquet
+windows_*/
+data/
+olay_dosyalari/
+
+# İstisna: İP-1'in küçük normalizasyon parametreleri repoda saklanır
+!results/ip1/normalization_subj0_train.npz
+
+# Gizli bilgiler
+.env
+client_secrets*.json
+
+# Python ve Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# İşletim sistemi
+.DS_Store
+Thumbs.db
