@@ -1,0 +1,50 @@
+{
+  "plan": "R2",
+  "seed": 2209,
+  "hf_revision": {
+    "pnpl/LibriBrain": "5a7c332b34fc7be329c4df3e527a41f67bfd878f",
+    "pnpl/LibriBrain2": "78443d024480c66bf340073c69bef50af8d1d335"
+  },
+  "evaluation": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "development": [
+    13,
+    14,
+    15,
+    16,
+    17,
+    19,
+    20,
+    22
+  ],
+  "descriptive_a1": [
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    30,
+    31,
+    32
+  ],
+  "descriptive_a2": [
+    18,
+    21
+  ],
+  "excluded": {
+    "29": "Olay dosyalar\u0131nda (ses-11 ve ses-12) kelime ba\u015flang\u0131\u00e7 zamanlar\u0131 dosya s\u0131ras\u0131nda geriye gidiyor; c\u00fcmleler zamanda i\u00e7 i\u00e7e ge\u00e7iyor. Pencereler MEG ile g\u00fcvenilir bi\u00e7imde hizalanamaz."
+  }
+}

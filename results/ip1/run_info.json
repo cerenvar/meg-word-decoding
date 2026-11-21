@@ -1,0 +1,18 @@
+{
+  "date_utc": "2026-11-21T12:56:44+00:00",
+  "python": "3.13.16",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "pnpl": "0.2.0",
+  "numpy": "2.4.6",
+  "pandas": "2.2.3",
+  "h5py": "3.14.0",
+  "torch": "2.14.1+cu130",
+  "huggingface_hub": "1.33.0",
+  "hf_revision": {
+    "pnpl/LibriBrain": "5a7c332b34fc7be329c4df3e527a41f67bfd878f",
+    "pnpl/LibriBrain2": "78443d024480c66bf340073c69bef50af8d1d335"
+  },
+  "seed": 2209,
+  "window_sec": 0.5,
+  "storage": "google_drive"
+}

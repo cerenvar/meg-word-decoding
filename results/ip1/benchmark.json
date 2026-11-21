@@ -1,0 +1,11 @@
+{
+  "device": "Tesla T4",
+  "subj0_train_windows": 307329,
+  "archive_size_gb": 27.9,
+  "archive_read_windows_per_s": 260,
+  "m1_parameters": 110482,
+  "m1_step_time_s_batch256": 0.0128,
+  "m1_epoch_compute_min_est": 0.3,
+  "m1_epoch_read_min_est": 19.7,
+  "gpu_peak_memory_gb": 0.17
+}

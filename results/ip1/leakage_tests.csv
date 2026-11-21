@@ -1,0 +1,9 @@
+test,result,detail
+T1_records_have_one_role,PASS,"226 kayıt, 10 rol"
+T2_participant_roles_disjoint,PASS,değerlendirme 12 · geliştirme 8
+T3_adaptation_subsets_nested,PASS,25305 uyarlama penceresi
+T4_windows_in_bounds_and_labelled,PASS,364643 pencere
+T5_same_stimulus_across_participants,PASS,62 kayıt; fazla kelime yok; eksik kelimeli kayıt 4 (en çok 6)
+T6_test_stimulus_not_in_source_train,PASS,"en yüksek örtüşme %0.41 (sub-0_ses-10_task-Sherlock1_run-1, ses-11)"
+T7_scaler_uses_only_train,PASS,sızıntı denetimi çalışıyor
+T8_event_times_monotonic,PASS,dışlanan: subj29 · seyrek çakışma temizlenen kayıt: 7 (2194 kelime)
