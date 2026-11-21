@@ -1,0 +1,11 @@
+# İP-1'in çalıştırıldığı ortam (Google Colab, Python 3.13, Tesla T4).
+# Colab bu kütüphanelerin çoğunu hazır getirir; sürümler yeniden üretilebilirlik için kaydedilmiştir.
+pnpl==0.2.0
+numpy==2.4.6
+pandas==2.2.3
+h5py==3.14.0
+huggingface_hub==1.33.0
+torch==2.14.1
+pyarrow
+matplotlib
+tqdm
