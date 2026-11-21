@@ -36,7 +36,7 @@ meg-word-decoding/
 
 Çalışmada açık erişimli **LibriBrain100** veri seti kullanılmaktadır (Mantegna vd., 2026). Veri, veri setiyle birlikte yayımlanan `pnpl` kütüphanesi aracılığıyla Hugging Face'ten indirilir.
 
-**Ham veri ve büyük ara dosyalar bu repoda bulunmaz.** Veri setinin lisans koşulları gereği ham MEG verisi paylaşılmaz; pencere arşivi gibi büyük dosyalar (~28 GB) da Git için uygun değildir. Bu dosyalar ekibin ortak Google Drive klasöründe (`MyDrive/MEG_2209A`) tutulur. Klasördeki dosyaların açıklaması, klasörün içindeki `README_veri.md` dosyasındadır.
+**Ham veri ve büyük ara dosyalar bu repoda bulunmaz.** Veri setinin lisans koşulları gereği ham MEG verisi paylaşılmaz; pencere arşivi gibi büyük dosyalar (~28 GB) da Git için uygun değildir. Bu dosyalar ekibin ortak Google Drive klasöründe (`MyDrive/MEG_2209A`) tutulur. Klasördeki dosyaların açıklaması repodaki DATA.md dosyasındadır.
 
 | Nerede | Ne |
 |---|---|
