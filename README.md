@@ -129,7 +129,7 @@ Veri seti:
 
 ## Ekip
 
-<!-- Ekip üyelerini ve iş paketi sorumluluklarını buraya ekleyin. -->
+<!-- Ekip üyelerini ve iş paketi sorumluluklarını buraya ekleyin. --> mevhibe ela ceren betül ömer
 
 ## Lisans
 
