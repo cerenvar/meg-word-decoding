@@ -1,0 +1,4 @@
+condition,bacc@10,top1_acc,loss
+original_alignment,0.2649,0.138,3.4385
+label_permutation_mean,0.203,0.114,3.5988
+uniform_random_labels,0.2011,0.0231,4.1323

@@ -1,0 +1,5 @@
+group,n_samples,present_classes,bacc@10,top1_acc,loss,mean_duration,median_duration
+overall_src_test,2681,50,0.2649,0.138,3.4385,,
+orta_sure,844,43,0.2964,0.1244,3.4562,0.133815,0.13
+kisa_sure,1004,36,0.3698,0.2062,3.2423,0.083685,0.09
+uzun_sure,833,49,0.2428,0.0696,3.6569,0.217995,0.19

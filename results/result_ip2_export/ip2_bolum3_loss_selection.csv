@@ -1,0 +1,3 @@
+option,selected,min_class_count,max_class_count,imbalance_ratio,notes
+inverse_freq_weighted_ce,True,332,40252,121.24,121 katlık sınıf dengesizliğini çözmek ve nadir kelimelere odaklanmak için ters frekans ağırlıklı CE seçildi.
+unweighted_cross_entropy,False,332,40252,121.24,Referans olarak tutuldu.

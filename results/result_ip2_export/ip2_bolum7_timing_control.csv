@@ -1,0 +1,5 @@
+mode,bacc@10,delta_vs_original,top1_acc,loss,elapsed_sec
+original,0.2649,0.0,0.138,3.4385,1.45
+time_reverse,0.2394,-0.0255,0.1216,3.4887,1.56
+time_permute,0.2365,-0.0284,0.1108,3.547,1.56
+circular_shift_half,0.2434,-0.0215,0.1261,3.4775,1.14

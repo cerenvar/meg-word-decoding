@@ -1,0 +1,3 @@
+model,bacc@10,top1_acc,loss
+M0_LinearMean,0.2,0.1503,3.7755
+M1_TemporalCNN,0.2649,0.138,3.692
