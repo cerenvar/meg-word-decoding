@@ -11,8 +11,8 @@ Projede, katılımcıların sesli kitap dinlerken kaydedilen MEG (manyetoensefal
 | İş paketi | Konu | Durum |
 |---|---|---|
 | İP-1 | Veri erişimi, veri hattı ve sızıntı denetimi | ✅ Tamamlandı |
-| İP-2 | Referans modeller (M0, M1) ve zamanlama kontrolleri | ⏳ Sırada |
-| İP-3 | CNN–Transformer hibrit modeli (M2, E5) | — |
+| İP-2 | Referans modeller (M0, M1) ve zamanlama kontrolleri | ✅ Tamamlandı |
+| İP-3 | CNN–Transformer hibrit modeli (M2, E5) | ⏳ Sırada |
 | İP-4 | Kişiye uyarlanabilir model ve ayar seçimi (M3) | — |
 | İP-5 | Az veriyle uyarlama ve mimari karşılaştırma deneyleri | — |
 | İP-6 | Ablasyon, istatistik ve maliyet analizi | — |
@@ -25,9 +25,11 @@ meg-word-decoding/
 ├── requirements.txt      # İP-1'in çalıştırıldığı kütüphane sürümleri
 ├── .gitignore            # büyük veri dosyalarının repoya eklenmesini engeller
 ├── notebooks/
-│   └── ip1_veri_hatti.ipynb
+│   ├── ip1_veri_hatti.ipynb
+│   └── ip2_referans_modelleer.ipynb
 ├── results/
-│   └── ip1/              # İP-1'in küçük sonuç tabloları
+│   ├── ip1/              # İP-1'in küçük sonuç tabloları
+│   └── ip2/              # İP-2'nin özet sonuç tabloları (CSV)
 ├── configs/              # İP-2'den itibaren deney yapılandırmaları
 └── src/                  # İP-2'den itibaren ortak kod
 ```
@@ -41,7 +43,7 @@ meg-word-decoding/
 | Nerede | Ne |
 |---|---|
 | Bu repo | Kod, not defterleri, küçük sonuç tabloları, belgeler |
-| Ortak Drive klasörü | Pencere arşivi, pencere listesi (manifest), ara dosyalar |
+| Ortak Drive klasörü | Pencere arşivi, pencere listesi (manifest), ara dosyalar, model ağırlıkları |
 | Hugging Face (LibriBrain100) | Ham MEG kayıtları ve kelime olay dosyaları |
 
 ### Kullanılan veri sürümü
@@ -57,10 +59,10 @@ Sonuçların yeniden üretilebilmesi için tüm indirmeler aşağıdaki commit'l
 
 Tüm adımlar Google Colab'da çalıştırılır.
 
-* **Çalışma zamanı:** Tesla T4 GPU
-* **Python:** 3.13
-* **Temel kütüphane:** `pnpl==0.2.0`; diğer sürümler `requirements.txt` dosyasında
-* **Depolama:** Ortak Google Drive klasörü (not defterlerinde `USE_DRIVE = True`)
+- **Çalışma zamanı:** Tesla T4 GPU
+- **Python:** 3.13
+- **Temel kütüphane:** `pnpl==0.2.0`; diğer sürümler `requirements.txt` dosyasında
+- **Depolama:** Ortak Google Drive klasörü (not defterlerinde `USE_DRIVE = True`)
 
 Hugging Face erişim anahtarı isteğe bağlıdır. Uzun indirmelerde `HTTP 503` hataları görülürse, Colab'ın *Gizli anahtarlar* bölümüne `HF_TOKEN` adıyla bir okuma anahtarı eklenebilir. Anahtarlar ve diğer gizli bilgiler repoya eklenmez.
 
@@ -79,16 +81,16 @@ Not defteri kaldığı yerden devam eder: Drive'daki ara dosyalar mevcutsa uzun 
 
 Sonuç tabloları: `results/ip1/`.
 
-* **Veri erişimi:** subj0'ın 162 kaydının tamamına erişildi (156 eğitim, 3 doğrulama, 3 test); eğitimde 50 kelimelik sözlüğe ait 307.329 pencere var. Hedef katılımcıların verisi kademeli yayımlandığı için öneride tanımlanan B planı (R2) uygulandı.
-* **Katılımcı rolleri** (tohum 2209):
-  * Değerlendirme: subj1–12 (hipotez testleri)
-  * Geliştirme: subj13, 14, 15, 16, 17, 19, 20, 22 (uyarlama ayarlarının seçimi)
-  * Betimsel: subj18, 21 (A1–A2) ve subj23–28, 30–32 (A1)
-  * Dışlanan: subj29 (kelime zamanları sistematik olarak tutarsız)
-* **Uyarlama verisi** 11. oturumdan, iç içe üç düzeyde: A1 = 5 dk, A2 = 10 dk, A3 = oturumun tamamı.
-* **Sızıntı denetimi:** 8 otomatik testin hepsi geçti.
-* **Veri kalitesi:** NaN, Inf veya düz kanal yok. subj0'ın 7 kaydında tek noktalı zaman hataları temizlendi; işaretlenen 60 aykırı kanal incelendi, hiçbiri çıkarılmadı.
-* **Ön ölçüm:** Kaynak eğitimde darboğaz veri okuma (15–20 dk/epoch; hesaplama 0,2–0,3 dk/epoch). İP-2'nin ilk işi hızlı bir veri yükleyicidir.
+- **Veri erişimi:** subj0'ın 162 kaydının tamamına erişildi (156 eğitim, 3 doğrulama, 3 test); eğitimde 50 kelimelik sözlüğe ait 307.329 pencere var. Hedef katılımcıların verisi kademeli yayımlandığı için öneride tanımlanan B planı (R2) uygulandı.
+- **Katılımcı rolleri** (tohum 2209):
+  - Değerlendirme: subj1–12 (hipotez testleri)
+  - Geliştirme: subj13, 14, 15, 16, 17, 19, 20, 22 (uyarlama ayarlarının seçimi)
+  - Betimsel: subj18, 21 (A1–A2) ve subj23–28, 30–32 (A1)
+  - Dışlanan: subj29 (kelime zamanları sistematik olarak tutarsız)
+- **Uyarlama verisi** 11. oturumdan, iç içe üç düzeyde: A1 = 5 dk, A2 = 10 dk, A3 = oturumun tamamı.
+- **Sızıntı denetimi:** 8 otomatik testin hepsi geçti.
+- **Veri kalitesi:** NaN, Inf veya düz kanal yok. subj0'ın 7 kaydında tek noktalı zaman hataları temizlendi; işaretlenen 60 aykırı kanal incelendi, hiçbiri çıkarılmadı.
+- **Ön ölçüm:** Kaynak eğitimde darboğaz veri okuma (15–20 dk/epoch; hesaplama 0,2–0,3 dk/epoch). İP-2'nin ilk işi hızlı bir veri yükleyicidir.
 
 Öneriden sapmalar ve gerekçeleri `results/ip1/deviations.csv` dosyasındadır.
 
@@ -109,6 +111,40 @@ Sonuç tabloları: `results/ip1/`.
 | `deviations.csv` | Öneriden sapmalar ve gerekçeleri |
 | `role_map.png`, `event_timing_drift.png` | Şekiller |
 
+## İP-2'yi çalıştırma
+
+1. `notebooks/ip2_referans_modelleer.ipynb` dosyasını Colab'da açın.
+2. *Çalışma zamanı → Çalışma zamanı türünü değiştir → T4 GPU* seçin.
+3. Bölüm 1 ve Bölüm 2 hücrelerini çalıştırarak İP-1 doğrulamasını yapın ve pencere arşivini yerel SSD'ye (`/content/windows_500ms_local`) önbellekleyin.
+4. `M0` ve `M1` modelleri önceden eğitilip ağırlıkları Drive'a (`MEG_2209A/ip2/m1_best.pt`) kaydedildiği için yeniden eğitim gerekmez; değerlendirme ve denetim bölümleri (Bölüm 6–10) doğrudan bu kontrol noktasını yükler.
+
+## İP-2 sonuçları
+
+Özet sonuç tabloları: `results/ip2/` (ayrıntılı JSON çıktıları ve model ağırlıkları ortak Drive klasöründeki `MEG_2209A/ip2/` dizinindedir).
+
+- **Hızlı veri yükleyici (`ChunkedMEGDataset`):** Yerel SSD önbellekleme, bellek eşlemeli (`mmap`) blok okuma (`chunk_size=2048`) ve sınırlı karıştırma tamponu (`buffer_size=4096`) ile `src_train` kümesindeki 307.329 pencerenin tek epoch okuma süresi **220,22 sn (3,67 dk)** ve okuma hızı **1.396 pencere/sn** olarak ölçüldü (İP-1'deki 260 pencere/sn hıza göre **5,4x** hızlanma).
+- **Sınıf dengesizliği ve kayıp fonksiyonu:** `src_train` kümesinde en sık ve en nadir sınıflar arasında **121,24x** dengesizlik tespit edildi; ters karekök frekans ağırlıklı `CrossEntropyLoss` seçildi ve temel değerlendirme ölçütü olarak `BAcc@10` kullanıldı.
+- **Referans modeller (`src_test`):**
+  - **M0 (`M0_LinearMean`):** `BAcc@10 = 0,2000`, `Top-1 Accuracy = 0,1503`, `Macro-F1 = 0,0052`
+  - **M1 (`M1_TemporalCNN`):** 27 epoch sonunda (erken durdurma, en iyi doğrulama 22. epoch) `BAcc@10 = 0,2649`, `Top-1 Accuracy = 0,1380`, `Macro-F1 = 0,0162` elde edilerek `M0` tabanının belirgin biçimde üzerine çıkıldı.
+- **Gürültü girdisi kontrolü:** `M1` modeline gerçek MEG pencereleri yerine standart Gauss gürültüsü (`torch.randn_like`) verildiğinde `BAcc@10` değeri `0,2649`'dan `0,2025`'e, `Top-1 Accuracy` ise `0,1380`'den `0,0269`'a (%80,5 bağıl düşüş) geriledi.
+- **Zamanlama kontrolleri:** Orijinal pencerelere (`0,2649` BAcc@10) kıyasla `time_reverse` (`0,2394`), `time_permute` (`0,2365`) ve `circular_shift_half` (`0,2434`) bozulmalarında `0,0215`–`0,0284` BAcc@10 düşüş gözlendi.
+- **Etiket karıştırma birim testleri:** Orijinal etiket hizalaması (`0,2649` BAcc@10), karıştırılmış etiket ortalaması (`0,2030`) ve uniform rastgele etiketlerden (`0,2011` BAcc@10, `0,0231` Top-1) yüksek sonuç vererek birim testleri geçti.
+- **Süre gruplu analiz (`N=2681`):** `kisa_sure` grubunda (`N=1004`, ort. `0,0837` sn) `0,3698` BAcc@10 ve `0,2062` Top-1 elde edilirken; `orta_sure` (`0,2964` BAcc@10) ve `uzun_sure` (`0,2428` BAcc@10, `0,0696` Top-1) gruplarına doğru başarım geriledi.
+
+### `results/ip2/` içeriği
+
+| Dosya | İçerik |
+|---|---|
+| `ip2_bolum1_run_info.csv` | Çalışma ortamı, tohum ve sınıf dengesizliği özeti |
+| `ip2_bolum2_dataloader_benchmark.csv` | Hızlı veri yükleyici epoch okuma süresi ve hızlanma ölçümü |
+| `ip2_bolum3_loss_selection.csv` | Kayıp fonksiyonu seçenekleri ve sınıf dengesizliği bilgileri |
+| `ip2_bolum4_5_models_summary.csv` | `M0` ve `M1` modellerinin `src_test` başarı karşılaştırması |
+| `ip2_bolum6_noise_control.csv` | Gerçek MEG ve Gauss gürültüsü girdisi karşılaştırma sonuçları |
+| `ip2_bolum7_timing_control.csv` | Zaman ekseni ters çevirme, karıştırma ve kaydırma kontrol sonuçları |
+| `ip2_bolum8_shuffle_tests.csv` | Orijinal, karıştırılmış ve uniform rastgele etiket birim testleri |
+| `ip2_bolum9_duration_grouped.csv` | Kelime/olay süresi gruplarına (`kisa_sure`, `orta_sure`, `uzun_sure`) göre doğruluk analizi |
+
 ## Çalışma kuralları
 
 Bu kurallar sonuçların geçerliliği için zorunludur:
@@ -117,7 +153,7 @@ Bu kurallar sonuçların geçerliliği için zorunludur:
 2. **Değerlendirme katılımcılarının 12. oturumu (`eval_test`) yalnızca nihai test için kullanılır.** Hiçbir ayar, erken durdurma veya model seçimi bu veriyle yapılmaz.
 3. **Normalizasyon ve süre grupları yalnızca kaynak eğitim verisinden (`src_train`) hesaplanır.**
 4. **PNPL'nin otomatik standardizasyonu (`standardize=True`) ve `WordClassification` etiketleri kullanılmaz.** Standardizasyon verilen tüm kayıtlar üzerinden hesaplandığı için sızıntıya yol açar; etiketler 50 kelimelik sözlüğe göre değil, tüm kelimelere göre atanır.
-5. **Her deneyin yapılandırması, tohumu, veri sürümü ve sonucu repoda kayıt altına alınır.**
+5. **Her deneyin yapılandırması, tohumu, veri sürümü ve sonucu repoda kayıt altına alınır.
 
 ## Atıf
 
@@ -125,11 +161,8 @@ Veri seti:
 
 > Mantegna, F., Jayalath, D., Elvers, G., Kim, T., Ballyk, B., Fung, A., Cho, S., Kwon, T., Kurth, L., Özdogan, M., Landau, G., Somaiya, P., Voets, N., Woolrich, M., & Parker Jones, O. (2026). LibriBrain100: One hundred hours of broad and deep MEG data for neural speech decoding at scale. arXiv preprint.
 
-
-
 ## Ekip
 
-<!-- Ekip üyelerini ve iş paketi sorumluluklarını buraya ekleyin. --> mevhibe ela ceren betül ömer
 
 ## Lisans
 
